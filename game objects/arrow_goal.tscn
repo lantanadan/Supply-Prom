@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://6iyb14rsx8b1"]
+
+[ext_resource type="Texture2D" uid="uid://dtp6x3vbw1pf2" path="res://assets/sprites/arrow.png" id="1_h6c1x"]
+
+[sub_resource type="GDScript" id="GDScript_h6c1x"]
+script/source = "extends Node2D
+
+@export_enum(\"Up\",\"Right\",\"Down\",\"Left\") var inputDirection : int = 0
+
+func _ready() -> void:
+	if inputDirection == 0:
+		$Sprite.rotation_degrees == 0
+	if inputDirection == 1:
+		$Sprite.rotation_degrees = 90
+	if inputDirection == 2:
+		$Sprite.rotation_degrees = 180
+	if inputDirection > 2:
+		$Sprite.rotation_degrees = -90
+"
+
+[sub_resource type="GDScript" id="GDScript_3ljyt"]
+script/source = "extends Area2D
+
+var arrowID : int = 0
+var hasBeat : bool = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6c1x"]
+size = Vector2(128, 128)
+
+[node name="ArrowGoal" type="Node2D" unique_id=1131248226]
+script = SubResource("GDScript_h6c1x")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=231448054]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_h6c1x")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=25527227 groups=["Goal"]]
+script = SubResource("GDScript_3ljyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=139781846]
+shape = SubResource("RectangleShape2D_h6c1x")

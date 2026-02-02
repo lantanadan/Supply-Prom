@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cwl5hqds6i8wx"]
+
+[ext_resource type="Script" uid="uid://fapuvqor5bxg" path="res://scripts/arrow_beat.gd" id="1_fi5dh"]
+[ext_resource type="Texture2D" uid="uid://dtp6x3vbw1pf2" path="res://assets/sprites/arrow.png" id="1_mpdc4"]
+[ext_resource type="Texture2D" uid="uid://b8nfmpyu03d0i" path="res://assets/sprites/arrow_hit.png" id="2_fi5dh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fi5dh"]
+size = Vector2(128, 32)
+
+[node name="Arrow" type="Node2D" unique_id=1247495106]
+script = ExtResource("1_fi5dh")
+arrowNormal = ExtResource("1_mpdc4")
+arrowHit = ExtResource("2_fi5dh")
+arrowSpeed = 100.0
+
+[node name="ArrowSprite" type="Sprite2D" parent="." unique_id=442043384]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_mpdc4")
+
+[node name="Awesome" type="Area2D" parent="." unique_id=2123288118]
+position = Vector2(0, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Awesome" unique_id=2022445691]
+shape = SubResource("RectangleShape2D_fi5dh")
+debug_color = Color(0, 1, 0, 0.41960785)
+
+[node name="Good" type="Area2D" parent="." unique_id=1634150493]
+position = Vector2(0, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Good" unique_id=903282389]
+shape = SubResource("RectangleShape2D_fi5dh")
+
+[node name="Okay" type="Area2D" parent="." unique_id=224691913]
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Okay" unique_id=1047495899]
+shape = SubResource("RectangleShape2D_fi5dh")
+debug_color = Color(0, 0, 0.69803923, 0.41960785)
+
+[node name="Rushed" type="Area2D" parent="." unique_id=2129513739]
+position = Vector2(0, 49)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rushed" unique_id=471771934]
+shape = SubResource("RectangleShape2D_fi5dh")
+debug_color = Color(0.5019608, 0, 0.69803923, 0.41960785)

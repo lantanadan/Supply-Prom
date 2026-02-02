@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://nltotebm2d40"]
+
+[ext_resource type="PackedScene" uid="uid://cwl5hqds6i8wx" path="res://game objects/arrow_beat.tscn" id="1_6ldc5"]
+[ext_resource type="Script" uid="uid://dq4b0lw0cu83k" path="res://scripts/dance.gd" id="1_u08ry"]
+[ext_resource type="PackedScene" uid="uid://6iyb14rsx8b1" path="res://game objects/arrow_goal.tscn" id="2_pvfo6"]
+[ext_resource type="PackedScene" uid="uid://s8ows37g0xvc" path="res://scenes/ui.tscn" id="4_v0xtu"]
+
+[node name="Dance" type="Node2D" unique_id=1617827048]
+script = ExtResource("1_u08ry")
+beatArrow = ExtResource("1_6ldc5")
+randomize = true
+
+[node name="UI" parent="." unique_id=462384197 instance=ExtResource("4_v0xtu")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 0
+size_flags_vertical = 1
+
+[node name="Game" type="Node2D" parent="." unique_id=598290787]
+
+[node name="Camera2D" type="Camera2D" parent="Game" unique_id=2040332392]
+position = Vector2(961, 543)
+
+[node name="Goals" type="Node2D" parent="Game/Camera2D" unique_id=1595196826]
+
+[node name="ArrowGoal_up" parent="Game/Camera2D/Goals" unique_id=1131248226 instance=ExtResource("2_pvfo6")]
+position = Vector2(0, -128)
+
+[node name="ArrowGoal_right" parent="Game/Camera2D/Goals" unique_id=9216556 instance=ExtResource("2_pvfo6")]
+position = Vector2(128, 0)
+inputDirection = 1
+
+[node name="ArrowGoal_down" parent="Game/Camera2D/Goals" unique_id=451215073 instance=ExtResource("2_pvfo6")]
+position = Vector2(0, 128)
+inputDirection = 2
+
+[node name="ArrowGoal_down2" parent="Game/Camera2D/Goals" unique_id=1488733108 instance=ExtResource("2_pvfo6")]
+position = Vector2(-128, 0)
+inputDirection = 3
+
+[node name="Up" type="Marker2D" parent="Game" unique_id=355154311]
+position = Vector2(960, 0)
+
+[node name="Right" type="Marker2D" parent="Game" unique_id=121739595]
+position = Vector2(1440, 540)
+
+[node name="Down" type="Marker2D" parent="Game" unique_id=1791830627]
+position = Vector2(960, 1080)
+
+[node name="Left" type="Marker2D" parent="Game" unique_id=859766432]
+position = Vector2(480, 540)
+
+[node name="Timer" type="Timer" parent="." unique_id=1306504031]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
