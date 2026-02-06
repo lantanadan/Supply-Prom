@@ -1,3 +1,43 @@
 [gd_scene format=3 uid="uid://ds840j167mlht"]
 
-[node name="Dance Floor" type="Node2D" unique_id=227488960]
+[ext_resource type="PackedScene" uid="uid://nltotebm2d40" path="res://game objects/dance.tscn" id="1_2xjas"]
+[ext_resource type="AudioStream" uid="uid://b1tavd1trrnef" path="res://assets/music/La Senorita.ogg" id="2_mqpn2"]
+[ext_resource type="PackedScene" uid="uid://dm6gumjs4xdem" path="res://game objects/character_petey.tscn" id="2_wb8vl"]
+[ext_resource type="PackedScene" uid="uid://bybouhdy271qd" path="res://game objects/character_patricia.tscn" id="3_wb8vl"]
+[ext_resource type="PackedScene" uid="uid://h7agby51258e" path="res://game objects/character_roberto.tscn" id="4_nr7nq"]
+[ext_resource type="PackedScene" uid="uid://djnskir4y4i0y" path="res://game objects/character_tammy.tscn" id="5_jqr3i"]
+[ext_resource type="PackedScene" uid="uid://cjofdjni68pt6" path="res://game objects/character_glenda.tscn" id="6_h3s63"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nr7nq"]
+size = Vector2(100, 100)
+
+[node name="Dance Floor" type="Node3D" unique_id=1048951818]
+
+[node name="Dance" parent="." unique_id=1617827048 instance=ExtResource("1_2xjas")]
+song = ExtResource("2_mqpn2")
+song_file_path = "res://song charts/La Senorita.sm"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=609111540]
+mesh = SubResource("PlaneMesh_nr7nq")
+
+[node name="Petey" parent="." unique_id=1260421751 instance=ExtResource("2_wb8vl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6787767, -0.07848552, 0.5912223)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=16989894]
+transform = Transform3D(0.95461535, 0, -0.29784143, 0, 1, 0, 0.29784143, 0, 0.95461535, -0.7195749, 3.6998677, 10.770159)
+
+[node name="Patricia" parent="." unique_id=1601518937 instance=ExtResource("3_wb8vl")]
+transform = Transform3D(0.9147906, 0, -0.40392852, 0, 1, 0, 0.40392852, 0, 0.9147906, 8.065461, -0.07848552, -0.5726404)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1036160058]
+transform = Transform3D(1, 0, 0, 0, 0.68110436, 0.7321864, 0, -0.7321864, 0.68110436, 0, 14.318146, 0)
+shadow_enabled = true
+
+[node name="Roberto" parent="." unique_id=570565847 instance=ExtResource("4_nr7nq")]
+transform = Transform3D(0.8195423, 0, 0.5730187, 0, 1, 0, -0.5730187, 0, 0.8195423, -8.513556, -0.07848552, -2.707539)
+
+[node name="Roberto2" parent="." unique_id=84830255 instance=ExtResource("5_jqr3i")]
+transform = Transform3D(0.9131902, 0, -0.4075337, 0, 1, 0, 0.4075337, 0, 0.9131902, 12.91902, -0.07848552, 5.5231266)
+
+[node name="Roberto3" parent="." unique_id=1564354076 instance=ExtResource("6_h3s63")]
+transform = Transform3D(0.73743063, 0, -0.67542297, 0, 1, 0, 0.67542297, 0, 0.73743063, 14.414683, -0.07848552, 0.9063444)

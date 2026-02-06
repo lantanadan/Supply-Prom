@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://dq4b0lw0cu83k" path="res://scripts/dance.gd" id="1_u08ry"]
 [ext_resource type="PackedScene" uid="uid://6iyb14rsx8b1" path="res://game objects/arrow_goal.tscn" id="2_pvfo6"]
 [ext_resource type="PackedScene" uid="uid://s8ows37g0xvc" path="res://scenes/ui.tscn" id="4_v0xtu"]
+[ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="5_lm8i2"]
+[ext_resource type="Script" uid="uid://ctpusvjxe50c0" path="res://scripts/songPicker.gd" id="6_5qxwi"]
+[ext_resource type="AudioStream" uid="uid://b1tavd1trrnef" path="res://assets/music/La Senorita.ogg" id="7_5qxwi"]
 
 [node name="Dance" type="Node2D" unique_id=1617827048]
 script = ExtResource("1_u08ry")
@@ -55,4 +58,14 @@ position = Vector2(480, 540)
 
 [node name="Timer" type="Timer" parent="." unique_id=1306504031]
 
+[node name="RhythmNotifier" type="Node" parent="." unique_id=1902497645]
+script = ExtResource("5_lm8i2")
+metadata/_custom_type_script = "uid://dos3qhffr4v0a"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=2040328978]
+volume_db = -10.0
+script = ExtResource("6_5qxwi")
+song = ExtResource("7_5qxwi")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="beat" from="RhythmNotifier" to="." method="_on_rhythm_notifier_beat"]

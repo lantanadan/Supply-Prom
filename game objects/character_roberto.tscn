@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://h7agby51258e"]
+
+[ext_resource type="Script" uid="uid://ca8nua5aislm0" path="res://scripts/character.gd" id="1_xmtsh"]
+[ext_resource type="Texture2D" uid="uid://cfabjmr0lkhky" path="res://assets/sprites/roberto_top.png" id="2_xmtsh"]
+[ext_resource type="Texture2D" uid="uid://b51c24xxxproy" path="res://assets/sprites/roberto_legs.png" id="3_nu3a3"]
+
+[sub_resource type="Animation" id="Animation_akssr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.055, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wedjd"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 5.055, 0), Vector3(-0.126, 4.534, 0), Vector3(0, 5.055, 0), Vector3(0.102, 4.537, 0), Vector3(0, 5.055, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryr8t"]
+_data = {
+&"RESET": SubResource("Animation_akssr"),
+&"idle": SubResource("Animation_wedjd")
+}
+
+[node name="Roberto" type="Node3D" unique_id=1260421751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07848552, 0)
+script = ExtResource("1_xmtsh")
+
+[node name="Top" type="Sprite3D" parent="." unique_id=1920317321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.055, 0)
+shaded = true
+alpha_cut = 1
+texture = ExtResource("2_xmtsh")
+
+[node name="Legs" type="Sprite3D" parent="." unique_id=2049399073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.033416, -0.1)
+shaded = true
+alpha_cut = 1
+texture = ExtResource("3_nu3a3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=991929444]
+libraries/ = SubResource("AnimationLibrary_ryr8t")
+autoplay = &"idle"

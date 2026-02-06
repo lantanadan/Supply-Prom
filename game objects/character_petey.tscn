@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dm6gumjs4xdem"]
+
+[ext_resource type="Texture2D" uid="uid://4nxr8tvj1j6p" path="res://assets/sprites/petey_top.png" id="1_3dbtb"]
+[ext_resource type="Script" uid="uid://ca8nua5aislm0" path="res://scripts/character.gd" id="1_akssr"]
+[ext_resource type="Texture2D" uid="uid://dmodkqgnpnfv" path="res://assets/sprites/petey_legs.png" id="2_akssr"]
+
+[sub_resource type="Animation" id="Animation_akssr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wedjd"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 4, 0), Vector3(-0.131, 3.5, 0), Vector3(0, 4, 0), Vector3(0.102, 3.5, 0), Vector3(0, 4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryr8t"]
+_data = {
+&"RESET": SubResource("Animation_akssr"),
+&"idle": SubResource("Animation_wedjd")
+}
+
+[node name="Petey" type="Node3D" unique_id=1260421751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07848552, 0)
+script = ExtResource("1_akssr")
+
+[node name="Top" type="Sprite3D" parent="." unique_id=1920317321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shaded = true
+alpha_cut = 1
+texture = ExtResource("1_3dbtb")
+
+[node name="Legs" type="Sprite3D" parent="." unique_id=2049399073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, -0.1)
+shaded = true
+alpha_cut = 1
+texture = ExtResource("2_akssr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=991929444]
+libraries/ = SubResource("AnimationLibrary_ryr8t")
+autoplay = &"idle"
